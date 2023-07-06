@@ -1,0 +1,131 @@
+\ProvidesPackage{preferences_beamer}
+
+%% Design/Looks
+\usetheme{Madrid}
+\usecolortheme{tuebingen}
+\useoutertheme[subsection=false]{miniframes}
+\useinnertheme{circles}
+\usefonttheme{default}
+
+
+\setbeamertemplate{background canvas}{%
+	\parbox[b]{0\paperwidth}{%
+		\vspace*{\paperheight}%
+		\vspace*{-2em}%
+	}%
+	\parbox[b]{\paperwidth}{%
+		\hfill%
+		\includegraphics[viewport =0 0 95 60,
+		height=.12\textheight]{watermark-tb}%
+	}%
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{tcolorbox}
+
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+	\expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+	{%else
+		% removed \addtocontents commands
+		\clearpage\beamer@notesactions%
+	}
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\beamer@compresstrue
+\makeatother
+
+\setbeamerfont{title}{size=\huge, series=\bfseries,}
+
+%\AtBeginSection[]{
+%	\begin{frame}[plain]
+%	\vfill
+%	\centering
+%	\begin{beamercolorbox}[center,ignorebg]{title}%,shadow=true,rounded=true]
+%			\rule{\textwidth}{1pt}\\
+%		\usebeamerfont{title}\insertsectionhead\par%
+%			\rule{\textwidth}{1pt}
+%	\end{beamercolorbox}
+%	\vfill
+%\end{frame}
+%}
+
+%% Appendix %%
+\newcommand{\backupbegin}{
+	\newcounter{framenumberappendix}
+	\setcounter{framenumberappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+	\addtocounter{framenumberappendix}{-\value{framenumber}}
+	\addtocounter{framenumber}{\value{framenumberappendix}} 
+}
+
+%% Footer %%
+\usepackage{hanging}
+\setbeamertemplate{footnote}{\hangpara{0em}{0}\makebox[0em][0]{\insertfootnotemark}\scriptsize\insertfootnotetext\par}
+
+%% Typesetting
+\setbeamerfont{footnote}{size=\scriptsize}
+\newcommand\blfootnote[1]{%
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+
+\usepackage[absolute,overlay]{textpos}
+%\usepackage[texcoord,grid,gridcolor=red!10,subgridcolor=green!10,gridunit=pt]{eso-pic} % show grid for textbox positioning
+
+\usepackage{ragged2e} 
+
+%% Notes %%
+\AtBeginNote{\addtolength\leftmargini{-40pt}}
+\AtEndNote{\addtolength\leftmargini{40pt}} 
+
+\setbeamertemplate{note page}[plain]
+
+%% Floats  
+\usepackage{caption}
+\captionsetup{font=footnotesize, 
+	skip=3pt, 
+	labelformat=empty, 
+	justification=centering
+	}%RaggedRight oder centering
+\usepackage{pgf}
+\usepackage{import}
+\usepackage{svg}
+
+
+%% Science
+\usepackage[version=4]{mhchem}
+\usepackage{gensymb}
+\usepackage{mathtools}
+%\usepackage[defaultmathsizes]{mathastext}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{B}{ }
+\usepackage{verbatim}
+
+%% Other
+\usepackage{multimedia}
+%\usepackage{media9}
+\usepackage{pgfpages}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,
+	linkcolor=black,
+	urlcolor=darkgray}
+\urlstyle{same}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage{dirtree}
+\usepackage{rotating}
+\usepackage{tabularx}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{csquotes}

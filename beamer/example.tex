@@ -1,0 +1,79 @@
+\documentclass[aspectratio=169]{beamer}
+
+\title{Title}
+\author{Famke Bäuerle}
+\date{date}
+
+\usepackage{preferences_beamer}
+
+\begin{document}
+
+%% Titlepage Slide %%
+\begin{frame}[plain]
+\vspace{.7cm}
+\centering
+\begin{tcolorbox}[colback=karminrot!100!white, coltext=white!100!white]
+	\begin{center}
+		{\huge Title}\\
+	\end{center}
+\end{tcolorbox}
+\vspace{.3cm}
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{center}
+\textcolor{anthrazit}{Famke Bäuerle}\\
+\vspace{.5cm}
+{\large \textcolor{anthrazit}{\textit{\today}}}
+\end{center}
+\end{column}
+\begin{column}{.5\textwidth}
+\tableofcontents
+\end{column}
+\end{columns}
+\vspace{1cm}
+\textcolor{anthrazit}{Title}
+\\\vspace{.5cm}
+\end{frame}
+
+%% Presentation Slides %%
+\section[Short]{This is a section}
+
+\begin{frame}
+This is a frame
+\end{frame}
+
+\begin{frame}
+    \frametitle{Frame with columns}
+        \begin{columns}[t]
+            \begin{column}{.5\textwidth}
+                \only<2->{\textbf{Advantages}}
+                \begin{itemize}
+                    \item<2-> Easy protocol
+                    \item<3-> yes
+                \end{itemize}
+            \end{column}
+            \begin{column}{.5\textwidth}
+                \only<4->{\textbf{Disadvantages}}
+                \begin{itemize}
+                    \item<4-> no
+                    \item<5-> no
+                \end{itemize}
+            \end{column}
+        \end{columns}
+    \blfootnote{\textcolor{darkgray}{Source}}
+\end{frame}
+
+
+%%% Additional Slides %%
+%\miniframeson
+\backupbegin
+\appendix
+
+\section*{appendix}
+\begin{frame}
+This is an additional slide
+\end{frame}
+
+\backupend
+
+\end{document}
